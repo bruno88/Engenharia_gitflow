@@ -2,132 +2,246 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Primeiro teste de engenharia com git flow</title>
-    <style>
-        /* Estilização do corpo da página */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Primeiro teste de engenharia com git flow</title>
+  <!-- Link para importação do Font Awesome para os ícones das redes sociais -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* Estilização do corpo da página */
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Estilização do cabeçalho */
+    .header {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #eef1f5;
+    }
 
-        /* Estilização do cabeçalho */
-        
-        .header {
-            width: 100%;
-            height: 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #eef1f5;
-        }
+    .header-logo {
+      margin-left: 30px;
+    }
 
-        .header-logo {
-            margin-left: 30px;
-        }
+    .header-logo img {
+      width: 240px;
+    }
 
-        .header-logo img {
-            width: 240px;
-        }
+    .header-menu {
+      margin-right: 30px;
+    }
 
-        .header-menu {
-            margin-right: 30px;
-        }
+    .header-menu ul {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+      font-size: 20px;
+    }
 
-        .header-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            font-size: 20px;
-        }
+    .header-menu ul li a {
+      text-decoration: none;
+      color: black;
+    }
 
-        .header-menu ul li a {
-            text-decoration: none;
-            color: black;
-        }
-    </style>
+    /* Estilização do rodapé */
+    .footer {
+      background-color: #eef1f5;
+      padding-top: 20px;
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      margin-bottom: 0;
+      box-sizing: border-box;
+    }
+
+    .footer-logo img {
+      width: 200px;
+    }
+
+    .footer-contact {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .footer-social {
+      margin: 10px 0;
+    }
+
+    .footer-social a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #555;
+      font-size: 2rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Cores dos ícones das redes sociais */
+    .footer-social a.fab-facebook:hover {
+      color: #3b5998;
+    }
+
+    .footer-social a.fab-instagram:hover {
+      color: #e4405f;
+    }
+
+    .footer-social a.fab-twitter:hover {
+      color: #000000;
+    }
+
+    .footer-social a.fab-youtube:hover {
+      color: #ff0000;
+    }
+
+    .footer-social a.fab-whatsapp:hover {
+      color: #25d366;
+    }
+
+    .footer-slogan {
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .footer-copyright {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ffffff;
+      background-color: #555;
+      padding: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-logo img {
+        width: 150px;
+      }
+
+      .footer-social a {
+        font-size: 1.8rem;
+      }
+
+      .footer-contact {
+        font-size: 0.9rem;
+      }
+
+      .footer-slogan {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-logo">
-            <!-- Upload da logomarca no link: https://ibb.co/S4vzwgCp -->
-            <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
+  <header class="header">
+    <div class="header-logo">
+      <!-- Upload da logomarca no link: https://ibb.co/S4vzwgCp -->
+      <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
+    </div>
+    <div class="header-menu">
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Cadastrar evento</a></li>
+        <li><a href="#">Sobre nós</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <h1> Nosso primeiro teste está sendo bem sucedido até agora! </h1>
+
+  <section style="max-width: 900px; margin: 50px auto; padding: 30px; background: #fff; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); border-radius: 12px;">
+    <h1 style="text-align: center; font-size: 2.2rem; color: #333;">Sobre Nós</h1>
+    <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: #555;">
+      Nosso site foi criado com o propósito de oferecer uma plataforma confiável
+      e inovadora para o cadastro e acesso a eventos. Buscamos facilitar a
+      organização e participação em eventos, proporcionando uma experiência
+      intuitiva e acessível para todos os usuários.
+    </p>
+
+    <h2 style="text-align: center; font-size: 1.8rem; margin-top: 30px; color: #444;">Missão, Visão e Valores</h2>
+    <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 30px;">
+      <div style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
+        <div style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #4CAF50;">
+          🎯</div>
+        <div>
+          <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Missão</h3>
+          <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nossa missão é oferecer uma plataforma
+            eficiente e acessível para
+            a gestão de eventos, conectando organizadores e participantes de maneira
+            intuitiva e segura.</p>
         </div>
-        <div class="header-menu">
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Eventos</a></li>
-                <li><a href="#">Cadastrar evento</a></li>
-                <li><a href="#">Sobre nós</a></li>
-            </ul>
+      </div>
+      <div style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
+        <div style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #FF5722;">
+          💡</div>
+        <div>
+          <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Visão</h3>
+          <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nosso objetivo é nos tornarmos uma
+            referência no setor de gestão de eventos,
+            promovendo inovação e acessibilidade para todos.</p>
         </div>
-    </header>
-
-    <h1> Nosso primeiro teste está sendo bem sucedido até agora! </h1>
-
-    <section
-        style="max-width: 900px; margin: 50px auto; padding: 30px; background: #fff; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); border-radius: 12px;">
-        <h1 style="text-align: center; font-size: 2.2rem; color: #333;">Sobre Nós</h1>
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: #555;">
-            Nosso site foi criado com o propósito de oferecer uma plataforma confiável
-            e inovadora para o cadastro e acesso a eventos. Buscamos facilitar a
-            organização e participação em eventos, proporcionando uma experiência
-            intuitiva e acessível para todos os usuários.
-        </p>
-
-        <h2 style="text-align: center; font-size: 1.8rem; margin-top: 30px; color: #444;">Missão, Visão e Valores</h2>
-        <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 30px;">
-            <div
-                style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
-                <div
-                    style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #4CAF50;">
-                    🎯</div>
-                <div>
-                    <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Missão</h3>
-                    <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nossa missão é oferecer uma plataforma
-                        eficiente e acessível para
-                        a gestão de eventos, conectando organizadores e participantes de maneira
-                        intuitiva e segura.</p>
-                </div>
-            </div>
-            <div
-                style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
-                <div
-                    style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #FF5722;">
-                    💡</div>
-                <div>
-                    <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Visão</h3>
-                    <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nosso objetivo é nos tornarmos uma
-                        referência no setor de gestão de eventos,
-                        promovendo inovação e acessibilidade para todos.</p>
-                </div>
-            </div>
-            <div
-                style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
-                <div
-                    style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #2196F3;">
-                    🌍</div>
-                <div>
-                    <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Valores</h3>
-                    <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nosso compromisso é criar um ambiente
-                        digital inclusivo e confiável,
-                        promovendo a melhor experiência para todos os usuários.</p>
-                </div>
-            </div>
+      </div>
+      <div style="display: flex; align-items: center; background: #eef1f5; padding: 18px; border-radius: 10px; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);">
+        <div style="width: 3rem; font-size: 2rem; margin-right: 20px; display: flex; justify-content: center; color: #2196F3;">
+          🌍</div>
+        <div>
+          <h3 style="margin: 0; font-size: 1.6rem; color: #222;">Valores</h3>
+          <p style="margin: 5px 0 0; font-size: 1rem; color: #555;">Nosso compromisso é criar um ambiente
+            digital inclusivo e confiável,
+            promovendo a melhor experiência para todos os usuários.</p>
         </div>
+      </div>
+    </div>
 
-        <h2 style="text-align: center; font-size: 1.8rem; margin-top: 30px; color: #444;">Nossa Equipe</h2>
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: #555;">
-            Somos estudantes do 4º período do curso de Sistemas para Internet,
-            desenvolvendo este projeto para a disciplina de Engenharia de Software.
-            Nosso objetivo é simular um ambiente real de desenvolvimento e
-            aprender sobre GitFlow enquanto criamos uma solução útil para gestão de eventos.
-        </p>
-    </section>
+    <h2 style="text-align: center; font-size: 1.8rem; margin-top: 30px; color: #444;">Nossa Equipe</h2>
+    <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: #555;">
+      Somos estudantes do 4º período do curso de Sistemas para Internet,
+      desenvolvendo este projeto para a disciplina de Engenharia de Software.
+      Nosso objetivo é simular um ambiente real de desenvolvimento e
+      aprender sobre GitFlow enquanto criamos uma solução útil para gestão de eventos.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
+    </div>
+    <p class="footer-slogan">
+        Conectando pessoas e eventos com inovação e confiança.
+    </p>
+    <div class="footer-contact">
+      <p>Email: prime.eventos@gmail.com</p>
+      <p>Telefone: +55 (11) 98765-4321</p>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="fab-facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="fab-instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="fab-twitter" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i>   </a>
+      <a href="#" class="fab-youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="fab-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-copyright">
+      <p>&copy; <span id="year"></span>. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza o ano automaticamente
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
