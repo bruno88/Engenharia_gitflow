@@ -67,7 +67,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 400px;
+            font-size: 16px;
         }
 
         label {
@@ -76,6 +77,7 @@
 
         input,
         textarea {
+            padding: 10px;
             margin-top: 5px;
             margin-bottom: 15px;
         }
@@ -226,10 +228,15 @@
                 eventoItem.classList.add("event-item");
                 eventoItem.innerHTML = `<strong>${evento.nome}</strong>`;
 
+                const dataArray = evento.data.split("-");
+                const dataFormatada = new Date(dataArray[0], dataArray[1] - 1, dataArray[2]);
+
+            // Formata a data para PT-BR (DD/MM/YYYY)
+                const dataPTBR = dataFormatada.toLocaleDateString("pt-BR");
                 const tooltip = document.createElement("div");
                 tooltip.classList.add("tooltip");
                 tooltip.innerHTML = `<p><strong>Descrição:</strong> ${evento.descricao}</p>
-                                     <p><strong>Data:</strong> ${evento.data}</p>
+                                     <p><strong>Data:</strong> ${dataPTBR}</p>
                                      <p><strong>Local:</strong> ${evento.local}</p>`;
                 eventoItem.appendChild(tooltip);
                 eventosContainer.appendChild(eventoItem);
