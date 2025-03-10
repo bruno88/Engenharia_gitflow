@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Primeiro teste de engenharia com git flow</title>
+    <title>Primeiro teste de engenharia com git flow</title>
     <style>
         /* Estilização do corpo da página */
-
         body {
             margin: 0;
             padding: 0;
@@ -30,7 +29,6 @@
         }
 
         /* Estilização do cabeçalho */
-
         .header {
             width: 100%;
             height: 100px;
@@ -100,13 +98,50 @@
             flex-direction: column;
             justify-content: center;
         }
+
+        .event-list {
+            width: 250px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 120px;
+            /* Ajuste para garantir que fique abaixo do cabeçalho */
+            right: 10%;
+            display: none;
+            /* Esconde a lista de eventos inicialmente */
+        }
+
+        .event-list h3 {
+            text-align: center;
+        }
+
+        .event-item {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .event-item:hover .tooltip {
+            display: block;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
     </style>
 </head>
 
 <body>
     <header class="header">
         <div class="header-logo">
-            <!-- Upload da logomarca no link: https://ibb.co/S4vzwgCp -->
             <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
         </div>
         <div class="header-menu">
@@ -118,21 +153,22 @@
             </ul>
         </div>
     </header>
+
     <main>
         <div class="container">
             <h2>Cadastro de Evento</h2>
-            <form action="#" method="post">
+            <form id="eventoForm">
                 <div class="formGroup">
                     <label for="nome">Nome do Evento:</label>
                     <input type="text" id="nome" name="nome" required placeholder="Digite o Nome do Evento">
                 </div>
                 <div class="formGroup">
                     <label for="descricao">Descrição:</label>
-                    <textarea id="descricao" name="descricao" required placeholder="Digite uma Descrição" ></textarea>
+                    <textarea id="descricao" name="descricao" required placeholder="Digite uma Descrição"></textarea>
                 </div>
                 <div class="formGroup">
                     <label for="data">Data:</label>
-                    <input type="date" id="data" name="data" required >
+                    <input type="date" id="data" name="data" required>
                 </div>
                 <div class="formGroup">
                     <label for="local">Local:</label>
@@ -145,7 +181,61 @@
                 <button type="submit">Cadastrar Evento</button>
             </form>
         </div>
+        <div class="event-list" id="eventList">
+            <h3>Eventos</h3>
+            <div id="eventosContainer"></div>
+        </div>
     </main>
+
+    <script>
+        class Evento {
+            constructor(nome, descricao, data, local) {
+                this.nome = nome;
+                this.descricao = descricao;
+                this.data = data;
+                this.local = local;
+            }
+        }
+
+        const eventos = [];
+
+        document.getElementById("eventoForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+            const descricao = document.getElementById("descricao").value;
+            const data = document.getElementById("data").value;
+            const local = document.getElementById("local").value;
+
+            const novoEvento = new Evento(nome, descricao, data, local);
+            eventos.push(novoEvento);
+
+            atualizarListaEventos();
+            this.reset();
+        });
+
+        function atualizarListaEventos() {
+            const eventosContainer = document.getElementById("eventosContainer");
+            const eventList = document.getElementById("eventList");
+
+            eventosContainer.innerHTML = "";
+            eventList.style.display = eventos.length > 0 ? "block" : "none"; // Mostra ou esconde a lista de eventos
+
+            eventos.forEach((evento, index) => {
+                const eventoItem = document.createElement("div");
+                eventoItem.classList.add("event-item");
+                eventoItem.innerHTML = `<strong>${evento.nome}</strong>`;
+
+                const tooltip = document.createElement("div");
+                tooltip.classList.add("tooltip");
+                tooltip.innerHTML = `<p><strong>Descrição:</strong> ${evento.descricao}</p>
+                                     <p><strong>Data:</strong> ${evento.data}</p>
+                                     <p><strong>Local:</strong> ${evento.local}</p>`;
+                eventoItem.appendChild(tooltip);
+                eventosContainer.appendChild(eventoItem);
+            });
+        }
+    </script>
 </body>
 
 </html>
