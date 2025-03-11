@@ -5,143 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeiro teste de engenharia com git flow</title>
-    <style>
-        /* Estilização do corpo da página */
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            flex-direction: column;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        main {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        /* Estilização do cabeçalho */
-        .header {
-            width: 100%;
-            height: 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #eef1f5;
-        }
-
-        .header-logo {
-            margin-left: 30px;
-        }
-
-        .header-logo img {
-            width: 240px;
-        }
-
-        .header-menu {
-            margin-right: 30px;
-        }
-
-        .header-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            font-size: 20px;
-        }
-
-        .header-menu ul li a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            font-size: 16px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            width: 100%;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        .formGroup {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .event-list {
-            width: 250px;
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 120px;
-            /* Ajuste para garantir que fique abaixo do cabeçalho */
-            right: 10%;
-            display: none;
-            /* Esconde a lista de eventos inicialmente */
-        }
-
-        .event-list h3 {
-            text-align: center;
-        }
-
-        .event-item {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-        .event-item:hover .tooltip {
-            display: block;
-        }
-
-        .tooltip {
-            display: none;
-            position: absolute;
-            background: white;
-            border: 1px solid #ddd;
-            padding: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            width: 200px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="body-cadastro">
     <header class="header">
         <div class="header-logo">
             <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
@@ -150,16 +17,15 @@
             <ul>
                 <li><a href="/index.html">Início</a></li>
                 <li><a href="/eventos.html">Eventos</a></li>
-                <li><a href="/form_cadatro_evento.html">Cadastrar evento</a></li>
+                <li><a href="/form_cadastro_evento.html">Cadastrar evento</a></li>
                 <li><a href="#">Sobre nós</a></li>
             </ul>
         </div>
     </header>
-
-    <main>
-        <div class="container">
+    <main class="main-cadastro">
+        <div class="container-cadastro">
             <h2>Cadastro de Evento</h2>
-            <form id="eventoForm">
+            <form id="eventoForm" class="formCadastro">
                 <div class="formGroup">
                     <label for="nome">Nome do Evento:</label>
                     <input type="text" id="nome" name="nome" required placeholder="Digite o Nome do Evento">
@@ -188,61 +54,7 @@
             <div id="eventosContainer"></div>
         </div>
     </main>
-
-    <script>
-        class Evento {
-            constructor(nome, descricao, data, local) {
-                this.nome = nome;
-                this.descricao = descricao;
-                this.data = data;
-                this.local = local;
-            }
-        }
-
-        const eventos = [];
-
-        document.getElementById("eventoForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const nome = document.getElementById("nome").value;
-            const descricao = document.getElementById("descricao").value;
-            const data = document.getElementById("data").value;
-            const local = document.getElementById("local").value;
-
-            const novoEvento = new Evento(nome, descricao, data, local);
-            eventos.push(novoEvento);
-
-            atualizarListaEventos();
-            this.reset();
-        });
-
-        function atualizarListaEventos() {
-            const eventosContainer = document.getElementById("eventosContainer");
-            const eventList = document.getElementById("eventList");
-
-            eventosContainer.innerHTML = "";
-            eventList.style.display = eventos.length > 0 ? "block" : "none"; // Mostra ou esconde a lista de eventos
-
-            eventos.forEach((evento, index) => {
-                const eventoItem = document.createElement("div");
-                eventoItem.classList.add("event-item");
-                eventoItem.innerHTML = `<strong>${evento.nome}</strong>`;
-
-                const dataArray = evento.data.split("-");
-                const dataFormatada = new Date(dataArray[0], dataArray[1] - 1, dataArray[2]);
-
-            // Formata a data para PT-BR (DD/MM/YYYY)
-                const dataPTBR = dataFormatada.toLocaleDateString("pt-BR");
-                const tooltip = document.createElement("div");
-                tooltip.classList.add("tooltip");
-                tooltip.innerHTML = `<p><strong>Descrição:</strong> ${evento.descricao}</p>
-                                     <p><strong>Data:</strong> ${dataPTBR}</p>
-                                     <p><strong>Local:</strong> ${evento.local}</p>`;
-                eventoItem.appendChild(tooltip);
-                eventosContainer.appendChild(eventoItem);
-            });
-        }
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
