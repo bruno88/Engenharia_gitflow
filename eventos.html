@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Primeiro teste de engenharia com git flow</title>
     <style>
-        /* Estilização do corpo da página */
-
         body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-
-        /* Estilização do cabeçalho */
 
         .header {
             width: 100%;
@@ -23,18 +20,11 @@
             justify-content: space-between;
             align-items: center;
             background-color: #eef1f5;
-        }
-
-        .header-logo {
-            margin-left: 30px;
+            padding: 0 30px;
         }
 
         .header-logo img {
             width: 240px;
-        }
-
-        .header-menu {
-            margin-right: 30px;
         }
 
         .header-menu ul {
@@ -49,20 +39,37 @@
             color: black;
         }
 
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #filtro {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
         .evento {
-            margin: 50px auto;
+            margin: 20px auto;
             padding: 30px;
             width: 50%;
             background: #eef1f5;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
+            display: block;
         }
-        .evento div{
+
+        .evento div {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .evento-imagem{
+
+        .evento-imagem {
             width: 100%;
             border-radius: 12px;
             margin-bottom: 20px;
@@ -73,21 +80,23 @@
 <body>
     <header class="header">
         <div class="header-logo">
-            <!-- Upload da logomarca no link: https://ibb.co/S4vzwgCp -->
             <img src="https://i.ibb.co/ksct2TCF/logomarca.png" alt="Logo da empresa">
         </div>
         <div class="header-menu">
             <ul>
                 <li><a href="/index.html">Início</a></li>
                 <li><a href="/eventos.html">Eventos</a></li>
-                <li><a href="#">Cadastrar evento</a></li>
+                <li><a href="/form_cadastro_evento.html">Cadastrar evento</a></li>
                 <li><a href="#">Sobre nós</a></li>
             </ul>
         </div>
     </header>
-    <main style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-        <h1>Todos os eventos dispóniveis</h1>
-        <section class="evento">
+    
+    <main class="container">
+        <h1>Todos os nossos eventos</h1>
+        <input type="text" id="filtro" placeholder="Pesquisar evento por descrição..." onkeyup="filtrarEventos()">
+        
+        <section class="evento" descricao="party time show musica música banda">
             <div>
                 <img src="/imagens/evento-1.jpg" alt="Imagem do evento" class="evento-imagem">
                 <h2>Party Time</h2>
@@ -95,7 +104,7 @@
                 <p>Local: Auditório Principal</p>
             </div>
         </section>
-        <section class="evento">
+        <section class="evento" descricao="workshop palestra aula">
             <div>
                 <img src="/imagens/evento-2.jpg" alt="Imagem do evento" class="evento-imagem">
                 <h2>Workshop</h2>
@@ -103,11 +112,39 @@
                 <p>Local: Auditorium</p>
             </div>
         </section>
-
+        <section class="evento" descricao="feira tecnológica ciências ciencias informatica informática anime geek nerd">
+            <div>
+                <img src="/imagens/evento-3.jpg" alt="Imagem do evento" class="evento-imagem">
+                <h2>Feira Tecnológica</h2>
+                <p>Data: 30 de Março de 2025</p>
+                <p>Local: Centro de Convenções</p>
+            </div>
+        </section>
+        <section class="evento" descricao="formatura festa graduação graduaco curso ifes tsi">
+            <div>
+                <img src="/imagens/evento-4.jpg" alt="Imagem do evento" class="evento-imagem">
+                <h2>Formatura</h2>
+                <p>Data: 20 de Março de 2025</p>
+                <p>Local: Auditório Principal</p>
+            </div>
+        </section>
     </main>
 
+    <script>
+        function filtrarEventos() {
+            let input = document.getElementById("filtro").value.toLowerCase();
+            let eventos = document.querySelectorAll(".evento");
 
-
+            eventos.forEach(evento => {
+                let descricao = evento.getAttribute("descricao").toLowerCase();
+                if (descricao.includes(input)) {
+                    evento.style.display = "block";
+                } else {
+                    evento.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
