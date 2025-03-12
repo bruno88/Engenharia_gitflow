@@ -1,0 +1,484 @@
+:root {
+    /* Cores de fundo */
+    --cor-cinza-claro-secundario: #eef1f5; 
+    --cor-branco: #ffffff;    
+    
+    /* Cores de texto */
+    --cor-cinza-escuro-texto: #333;     
+    --cor-cinza-medio-texto: #555;   
+    --cor-cinza-escuro-texto-principal: #222;  
+    --cor-cinza-claro-texto: #777;  
+    
+    /* Cores de acento */
+    --cor-rosa: #e4405f;     
+    --cor-azul: #3b5998;   
+    --cor-vermelho: #ff0000; 
+    --cor-preto: #000000;   
+    --cor-verde: #25d366;  
+    
+    /* Cores de bordas e sombras */
+    --cor-cinza-claro-borda: #ccc; 
+    --cor-cinza-escuro-sombra: rgba(0, 0, 0, 0.1); 
+    --cor-cinza-claro-tooltip: #ddd;
+    
+    /* Cores de destaque */
+    --cor-cinza-escuro-background: #444; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: 50px;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body-cadastro {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-eventos {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.main-cadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 30px 0;
+}
+
+/*--------------------------------------------------- Estilização do cabeçalho ---------------------------------- */
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-cinza-claro-secundario);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo */
+.header-logo img {
+    padding-left: 50px;
+    width: 180px; /* Ajuste automático para telas menores */
+    max-width: 100%;
+}
+
+/* Menu */
+
+.header-menu {
+    position: relative;
+    padding-right: 50px;
+}
+
+.header-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.header-menu ul li a {
+    text-decoration: none;
+    color: var(--cor-preto);
+    transition: color 0.3s ease-in-out;
+}
+
+.header-menu ul li a:hover {
+    color: var(--cor-primaria); /* Cor ao passar o mouse */
+}
+
+.menu-toggle {
+    display: none;
+    padding-right: 50px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+
+    .header-logo img {
+        width: 140px; /* Reduzindo para telas menores */
+    }
+
+    .header-menu {
+        display: none; /* Oculta o menu padrão */
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        z-index: 2;
+        background: var(--cor-cinza-claro-secundario);
+        text-align: center;
+        flex-direction: column;
+        padding: 10px 0;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.3s ease-in-out;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: var(--cor-preto);
+    }
+}
+
+/* Exibir menu ao ativar */
+.menu-active .header-menu {
+    display: flex;
+}
+
+/* Animação suave do menu */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------Estilização da seção sobre nós e seção contato-------------------------------*/
+.section-container {
+    max-width: 900px; 
+    margin: 50px auto; 
+    padding: 30px; 
+    background: var(--cor-branco); 
+    box-shadow: 0 6px 12px var(--cor-cinza-escuro-sombra); 
+    border-radius: 12px;
+}
+
+.section-container .paragrafo {
+    text-align: center; 
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    color: var(--cor-cinza-medio-texto);
+}
+
+.section-container h2 {
+    text-align: center; 
+    font-size: 1.8rem; 
+    margin-top: 30px; 
+    color: var(--cor-cinza-escuro-background);
+}
+
+.section-container h1 {
+    text-align: center; 
+    font-size: 2.2rem; 
+    color: var(--cor-cinza-escuro-texto);
+}
+
+.container-valores {
+    display: flex; 
+    flex-direction: column; 
+    gap: 25px; 
+    margin-top: 30px;
+}
+
+.valores {
+    display: flex; 
+    align-items: center; 
+    background: var(--cor-cinza-claro-secundario); 
+    padding: 18px; 
+    border-radius: 10px; 
+    box-shadow: 3px 3px 12px var(--cor-cinza-escuro-sombra);
+}
+
+.valores .icone {
+    width: 3rem; 
+    font-size: 2rem; 
+    margin-right: 20px; 
+    display: flex; 
+    justify-content: center;
+}
+
+.valores .titulo {
+    margin: 0; 
+    font-size: 1.6rem; 
+    color: var(--cor-cinza-escuro-texto-principal);
+}
+
+.paragrafo-valores {
+    margin: 5px 0 0; 
+    font-size: 1rem; 
+    color: var(--cor-cinza-medio-texto);
+}
+
+.label-contato {
+    display: block; 
+    margin-bottom: 5px; 
+    font-size: 1.2rem; 
+    color: var(--cor-cinza-medio-texto);
+}
+
+.container-formulario {
+    display: flex; 
+    justify-content: space-between; 
+    width: 50%; 
+    margin-left: -22px;
+}
+
+.formulario-contato {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.formulario-contato input {
+    border: solid 1px var(--cor-cinza-claro-borda); 
+    border-radius: 5px; 
+    padding: 8px 10px;
+}
+
+.formulario-contato button {
+    background: var(--cor-cinza-medio-texto); 
+    color: var(--cor-branco); 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1.0rem;
+}
+
+.input-nome, .input-telefone {
+    font-size: 15px; 
+    width: 100%; 
+    margin-bottom: 30px;
+}
+
+.input-email, .input-mensagem {
+    font-size: 1rem; 
+    width: 50%; 
+    margin-bottom: 30px;
+}
+
+/*-------------------------------------------------------Estilização do formulário de cadastro-------------------------------------*/
+.container-cadastro {
+    background: var(--cor-branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--cor-cinza-escuro-sombra);
+    width: 400px;
+    font-size: 16px;
+}
+
+.formCadastro label {
+    font-weight: bold;
+}
+
+.formCadastro input,
+.formCadastro textarea {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.formCadastro button {
+    width: 100%;
+    background-color:var(--cor-cinza-medio-texto);
+    color: var(--cor-branco);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.formCadastro button:hover {
+    background-color: var(--cor-cinza-claro-secundario);
+    color: var(--cor-preto);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-list {
+    width: 250px;
+    background: var(--cor-branco);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--cor-cinza-escuro-sombra);
+    position: absolute;
+    top: 120px;
+    right: 10%;
+    display: none;
+}
+
+.event-list h3 {
+    text-align: center;
+}
+
+.event-item {
+    padding: 8px;
+    border-bottom: 1px solid var(--cor-cinza-claro-tooltip);
+    cursor: pointer;
+}
+
+.event-item:hover .tooltip {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background: var(--cor-branco);
+    border: 1px solid var(--cor-cinza-claro-tooltip);
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+}
+
+/*-------------------------------------------------------Estilização dos eventos------------------------------------------------ */
+.evento {
+    margin: 50px auto;
+    padding: 30px;
+    width: 50%;
+    background: var(--cor-cinza-claro-secundario);
+    box-shadow: 0 6px 12px var(--cor-cinza-escuro-sombra);
+    border-radius: 12px;
+}
+.evento div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.evento-imagem{
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#filtro {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/*----------------------------------------------------------------Estilização do rodapé---------------------------------------- */
+.footer {
+    background-color: var(--cor-cinza-claro-secundario);
+    padding-top: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.footer-logo img {
+    width: 200px;
+}
+
+.footer-contact {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: var(--cor-cinza-medio-texto);
+}
+
+.footer-social {
+    margin: 10px 0;
+}
+
+.footer-social a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--cor-cinza-medio-texto);
+    font-size: 2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2);
+}
+
+/* Cores dos ícones das redes sociais */
+.footer-social a.fab-facebook:hover {
+    color: var(--cor-azul);
+}
+
+.footer-social a.fab-instagram:hover {
+    color: var(--cor-rosa);
+}
+
+.footer-social a.fab-twitter:hover {
+    color: var(--cor-preto);
+}
+
+.footer-social a.fab-youtube:hover {
+    color: var(--cor-vermelho);
+}
+
+.footer-social a.fab-whatsapp:hover {
+    color: var(--cor-verde);
+}
+
+.footer-slogan {
+    font-size: 1.2rem;
+    color: var(--cor-cinza-escuro-texto);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-style: italic;
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--cor-branco);
+    background-color: var(--cor-cinza-medio-texto);
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .footer-logo img {
+        width: 150px;
+    }
+
+    .footer-social a {
+        font-size: 1.6rem;
+    }
+
+    .footer-contact {
+        font-size: 0.9rem;
+    }
+
+    .footer-slogan {
+        font-size: 1rem;
+    }
+}
