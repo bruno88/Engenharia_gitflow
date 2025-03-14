@@ -47,8 +47,6 @@ function atualizarListaEventos() {
     eventosContainer.innerHTML = "";
     eventList.style.display = eventos.length > 0 ? "block" : "none"; // Mostra ou esconde a lista de eventos
 
-    console.log(atualizarListaEventos());
-
     eventos.forEach((evento, index) => {
         const eventoItem = document.createElement("div");
         eventoItem.classList.add("event-item");
