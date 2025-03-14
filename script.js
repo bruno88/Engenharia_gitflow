@@ -47,6 +47,8 @@ function atualizarListaEventos() {
     eventosContainer.innerHTML = "";
     eventList.style.display = eventos.length > 0 ? "block" : "none"; // Mostra ou esconde a lista de eventos
 
+    console.log(atualizarListaEventos());
+
     eventos.forEach((evento, index) => {
         const eventoItem = document.createElement("div");
         eventoItem.classList.add("event-item");
@@ -66,3 +68,43 @@ function atualizarListaEventos() {
         eventosContainer.appendChild(eventoItem);
     });
 }
+
+// Ordenar eventos por data crescente
+function ordenarPorDataCrescente() {
+    eventos.sort((a, b) => {
+        const dataA = new Date(a.data.split("-").reverse().join("-"));
+        const dataB = new Date(b.data.split("-").reverse().join("-"));
+        return dataA - dataB; // Ordena de forma crescente
+    });
+    atualizarListaEventos();
+}
+
+// Ordenar eventos por data decrescente
+function ordenarPorDataDecrescente() {
+    eventos.sort((a, b) => {
+        const dataA = new Date(a.data.split("-").reverse().join("-"));
+        const dataB = new Date(b.data.split("-").reverse().join("-"));
+        return dataB - dataA; // Ordena de forma decrescente
+    });
+    atualizarListaEventos();
+}
+
+// Eventos dos botões para ordenar
+var btnDataCrescente = document.getElementById("btnDataCrescente");
+var btnDataDecrescente = document.getElementById("btnDataDecrescente");
+
+btnDataCrescente.addEventListener("click", () => {
+    ordenarPorDataCrescente();  // Ordena por data crescente
+});
+
+btnDataDecrescente.addEventListener("click", () => {
+    ordenarPorDataDecrescente();  // Ordena por data decrescente
+})
+
+var btnLimparEventos = document.getElementById("btnLimparEventos");
+
+btnLimparEventos.addEventListener("click", () => {
+    console.log('Botão "Limpar Eventos" clicado');
+    eventos.length = 0;  // Limpa o array de eventos
+    atualizarListaEventos();  // Atualiza a lista de eventos na interface
+});
